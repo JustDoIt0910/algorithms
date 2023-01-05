@@ -14,4 +14,6 @@ typedef int bool;
 #define METHODDEF(type) static type
 #define METHOD(type) type
 
+#define min(a, b) ((a) < (b) ? (a) : (b))
+
 #endif //ALGORITHMS_COMMON_H
