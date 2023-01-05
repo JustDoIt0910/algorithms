@@ -6,6 +6,8 @@
 
 //来自algorithms 4中的实现
 
+//********************** merge sort ********************************
+
 void merge(elem_t a[], int lo, int mid, int hi, elem_t* aux)
 {
     int i = lo;
@@ -34,7 +36,7 @@ void _merge_sort_v1(elem_t a[], int lo, int hi, elem_t* aux)
     merge(a, lo, mid, hi, aux);
 }
 
-void merge_sort_v1(elem_t a[], int lo, int hi)
+void mergesort_v1(elem_t a[], int lo, int hi)
 {
     int len = hi - lo + 1;
     elem_t* aux = (elem_t*)malloc(len * sizeof(elem_t));
@@ -42,7 +44,7 @@ void merge_sort_v1(elem_t a[], int lo, int hi)
     free(aux);
 }
 
-void merge_sort_v2(elem_t a[], int lo, int hi)
+void mergesort_v2(elem_t a[], int lo, int hi)
 {
     int len = hi - lo + 1;
     elem_t* aux = (elem_t*)malloc(len * sizeof(elem_t));
@@ -52,4 +54,42 @@ void merge_sort_v2(elem_t a[], int lo, int hi)
             merge(a, _lo, _lo + sz - 1, min(_lo + 2 * sz - 1, len - 1), aux);
     }
     free(aux);
+}
+
+//********************** quick sort ********************************
+
+void swap(elem_t* a, int i, int j)
+{
+    int t = a[j];
+    a[j] = a[i];
+    a[i] = t;
+}
+
+int partition(elem_t a[], int lo, int hi)
+{
+    int i = lo; int j = hi + 1;
+    elem_t v = a[lo];
+    while(true)
+    {
+        while (a[++i] < v)
+            if (i == hi)
+                break;
+        while (a[--j] > v)
+            if (j == lo)
+                break;
+        if(i >= j)
+            break;
+        swap(a, i, j);
+    }
+    swap(a, lo, j);
+    return j;
+}
+
+void quicksort(elem_t a[], int lo, int hi)
+{
+    if(hi <= lo)
+        return;
+    int p = partition(a, lo, hi);
+    quicksort(a, lo, p - 1);
+    quicksort(a, p + 1, hi);
 }
