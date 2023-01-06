@@ -93,3 +93,31 @@ void quicksort(elem_t a[], int lo, int hi)
     quicksort(a, lo, p - 1);
     quicksort(a, p + 1, hi);
 }
+
+//********************** heap sort ********************************
+
+void sink(elem_t* a, int k, int N)
+{
+    while(2 * k + 1 <= N - 1)
+    {
+        int j = 2 * k + 1;
+        if(j < N - 1 && a[j] < a[j + 1])
+            j++;
+        if(a[k] >= a[j])
+            break;
+        swap(a, k, j);
+        k = j;
+    }
+}
+
+void heapsort(elem_t a[], int N)
+{
+    for(int k = N / 2 - 1; k >= 0; k--)
+        sink(a, k, N);
+    int end = N - 1;
+    while(end > 0)
+    {
+        swap(a, 0, end--);
+        sink(a, 0, end);
+    }
+}

@@ -15,4 +15,6 @@ void mergesort_v2(elem_t a[], int lo, int hi);
 
 void quicksort(elem_t a[], int lo, int hi);
 
+void heapsort(elem_t a[], int N);
+
 #endif //ALGORITHM_SORT_H

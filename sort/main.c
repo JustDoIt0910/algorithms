@@ -22,4 +22,10 @@ int main()
     quicksort(a3, 0, 7);
     for (int i = 0; i < 8; ++i)
         printf("%d ", a3[i]);
+
+    printf("\n");
+    int a4[] = {7, 9, 2, 19, 0, 8, 3, 2, 6, 14, 11};
+    heapsort(a4, 11);
+    for (int i = 0; i < 11; ++i)
+        printf("%d ", a4[i]);
 }
