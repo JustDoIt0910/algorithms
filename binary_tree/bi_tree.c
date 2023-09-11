@@ -93,20 +93,5 @@ void InOrderTraverse_NonRecursive(BiTree root, visit_f visit)
 
 void PostOrderTraverse_NonRecursive(BiTree root, visit_f visit)
 {
-    sqStack s;
-    InitStack(&s);
-    BiTree p = root;
-    while(p || !StackEmpty(&s))
-    {
-        if(p)
-        {
-            Push(&s, p);
-            p = p->left;
-        }
-        else
-        {
-            Pop(&s, &p);
-            p = p->right;
-        }
-    }
+    // TODO
 }
