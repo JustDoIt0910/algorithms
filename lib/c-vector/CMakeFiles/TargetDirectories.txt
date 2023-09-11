@@ -1,6 +1,0 @@
-/home/zr/c_c++/c-vector-f96d57b1fb52e50cb97e08b78f714e46b2d88500/CMakeFiles/rebuild_cache.dir
-/home/zr/c_c++/c-vector-f96d57b1fb52e50cb97e08b78f714e46b2d88500/CMakeFiles/c-vector-example.dir
-/home/zr/c_c++/c-vector-f96d57b1fb52e50cb97e08b78f714e46b2d88500/CMakeFiles/edit_cache.dir
-/home/zr/c_c++/c-vector-f96d57b1fb52e50cb97e08b78f714e46b2d88500/CMakeFiles/test-c-vector.dir
-/home/zr/c_c++/c-vector-f96d57b1fb52e50cb97e08b78f714e46b2d88500/CMakeFiles/unit-tests.dir
-/home/zr/c_c++/c-vector-f96d57b1fb52e50cb97e08b78f714e46b2d88500/CMakeFiles/test.dir

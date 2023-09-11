@@ -1,1 +1,0 @@
-/usr/bin/cc    CMakeFiles/test-c-vector.dir/test.c.o  -o test-c-vector 
