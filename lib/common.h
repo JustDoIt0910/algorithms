@@ -6,7 +6,7 @@
 #define ALGORITHMS_COMMON_H
 
 typedef int elem_t;
-typedef int bool;
+typedef int Bool;
 #define true 1
 #define false 0
 #define GLOBAL(type) type

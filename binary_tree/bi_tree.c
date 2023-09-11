@@ -2,6 +2,7 @@
 // Created by just do it on 2023/9/11.
 //
 #include "bi_tree.h"
+#include "../stack/stack.h"
 #include <stdlib.h>
 
 int CreateBiTree(BiTree *root, FILE* fp)
@@ -12,7 +13,7 @@ int CreateBiTree(BiTree *root, FILE* fp)
         *root = NULL;
     else
     {
-        if(!(*root = malloc(sizeof(BiTree))))
+        if(!(*root = malloc(sizeof(BiTreeNode))))
             return -1;
         (*root)->data = ch;
         CreateBiTree(&(*root)->left, fp);
@@ -46,4 +47,66 @@ void PostOrderTraverse(BiTree root, visit_f visit)
     PostOrderTraverse(root->left, visit);
     PostOrderTraverse(root->right, visit);
     visit(root->data);
+}
+
+void PreOrderTraverse_NonRecursive(BiTree root, visit_f visit)
+{
+    sqStack s;
+    InitStack(&s);
+    BiTree p = root;
+    while(p || !StackEmpty(&s))
+    {
+        if(p)
+        {
+            visit(p->data);
+            Push(&s, p);
+            p = p->left;
+        }
+        else
+        {
+            Pop(&s, &p);
+            p = p->right;
+        }
+    }
+}
+
+void InOrderTraverse_NonRecursive(BiTree root, visit_f visit)
+{
+    sqStack s;
+    InitStack(&s);
+    BiTree p = root;
+    while(p || !StackEmpty(&s))
+    {
+        if(p)
+        {
+            Push(&s, p);
+            p = p->left;
+        }
+        else
+        {
+            Pop(&s, &p);
+            visit(p->data);
+            p = p->right;
+        }
+    }
+}
+
+void PostOrderTraverse_NonRecursive(BiTree root, visit_f visit)
+{
+    sqStack s;
+    InitStack(&s);
+    BiTree p = root;
+    while(p || !StackEmpty(&s))
+    {
+        if(p)
+        {
+            Push(&s, p);
+            p = p->left;
+        }
+        else
+        {
+            Pop(&s, &p);
+            p = p->right;
+        }
+    }
 }

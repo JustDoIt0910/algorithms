@@ -24,6 +24,10 @@ void PreOrderTraverse(BiTree root, visit_f visit);
 void InOrderTraverse(BiTree root, visit_f visit);
 void PostOrderTraverse(BiTree root, visit_f visit);
 
+void PreOrderTraverse_NonRecursive(BiTree root, visit_f visit);
+void InOrderTraverse_NonRecursive(BiTree root, visit_f visit);
+void PostOrderTraverse_NonRecursive(BiTree root, visit_f visit);
+
 #ifdef __cplusplus
 }
 #endif

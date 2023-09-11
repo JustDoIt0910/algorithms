@@ -44,7 +44,7 @@ typedef struct AVLTree
     METHOD(void)
     (*clear)(struct AVLTree*);
 
-    METHOD(bool)
+    METHOD(Bool)
     (*isEmpty)(struct AVLTree*);
 
     METHOD(int)
@@ -56,10 +56,10 @@ typedef struct AVLTree
     METHOD(AVLNode*)
     (*search)(struct AVLTree*, elem_t);
 
-    METHOD(bool)
+    METHOD(Bool)
     (*insert)(struct AVLTree*, elem_t, AVLNode_p*);
 
-    METHOD(bool)
+    METHOD(Bool)
     (*remove)(struct AVLTree*, elem_t);
 
 }AVLTree;

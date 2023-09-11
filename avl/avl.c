@@ -60,7 +60,7 @@ rightRotate(AVLNode_p root)
     return subL;
 }
 
-LOCAL(bool)
+LOCAL(Bool)
 _insert(AVLNode_p* root, elem_t e, AVLNode_p* exist)
 {
     if(!(*root))
@@ -107,7 +107,7 @@ _insert(AVLNode_p* root, elem_t e, AVLNode_p* exist)
     return true;
 }
 
-LOCAL(bool)
+LOCAL(Bool)
 _remove(AVLNode_p* root, elem_t e)
 {
     if(!(*root))
@@ -226,7 +226,7 @@ _clear(AVLNode_p root)
 
 /************************************** methods ******************************************/
 
-METHODDEF(bool)
+METHODDEF(Bool)
 isEmpty(AVLTree* this)
 {
     return (!this || this->_size == 0);
@@ -246,7 +246,7 @@ clear(AVLTree* this)
     this->_size = 0;
 }
 
-METHODDEF(bool)
+METHODDEF(Bool)
 insert(AVLTree* this, elem_t e, AVLNode_p* exist)
 {
     if(_insert(&this->_root, e, exist))
@@ -257,7 +257,7 @@ insert(AVLTree* this, elem_t e, AVLNode_p* exist)
     return false;
 }
 
-METHODDEF(bool)
+METHODDEF(Bool)
 remove_(AVLTree* this, elem_t e)
 {
     if(_remove(&this->_root, e))

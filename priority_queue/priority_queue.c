@@ -4,7 +4,7 @@
 #include "priority_queue.h"
 #include <stdlib.h>
 
-LOCAL(bool)
+LOCAL(Bool)
 less(PriorityQueue* this, elem_t a, elem_t b)
 {
     return this->pq[a] < this->pq[b];
