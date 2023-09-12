@@ -28,6 +28,7 @@ typedef struct
 } sqStack;
 
 Bool InitStack(sqStack* stack);
+void DestoryStack(sqStack* stack);
 void ClearStack(sqStack* stack);
 size_t StackLength(sqStack* stack);
 Bool StackEmpty(sqStack* stack);

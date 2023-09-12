@@ -14,6 +14,12 @@ Bool InitStack(sqStack* stack)
     return true;
 }
 
+void DestoryStack(sqStack* stack)
+{
+    if(stack && stack->base)
+        free(stack->base);
+}
+
 void ClearStack(sqStack* stack)
 {
     if(!stack)
