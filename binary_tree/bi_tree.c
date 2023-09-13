@@ -133,4 +133,80 @@ void PostOrderTraverse_NonRecursive(BiTree root, visit_f visit)
             }
         }
     }
+    DestoryStack(&s);
+}
+
+static ThreadedBiTree pre;
+
+static void InThreading(ThreadedBiTree p)
+{
+    if(!p) return;
+    InThreading(p->left);
+    if(!p->left)
+    {
+        p->lTag = Thread;
+        p->left = pre;
+    }
+    if(!pre->right)
+    {
+        pre->rTag = Thread;
+        pre->right = p;
+    }
+    pre = p;
+    InThreading(p->right);
+}
+
+void InOrderThreading(ThreadedBiTree* thread, ThreadedBiTree root)
+{
+    *thread = malloc(sizeof(ThreadedBiTreeNode));
+    (*thread)->lTag = Link;
+    (*thread)->rTag = Thread;
+    (*thread)->right = *thread;
+    if(!root)
+        (*thread)->left = *thread;
+    else
+    {
+        (*thread)->left = root;
+        pre = *thread;
+        InThreading(root);
+        pre->right = *thread;
+        pre->rTag = Thread;
+        (*thread)->right = pre;
+    }
+}
+
+void InOrderTraverseThreaded(ThreadedBiTree head, visit_f visit)
+{
+    ThreadedBiTree p = head->left;
+    while(p != head)
+    {
+        while(p->lTag == Link)
+            p = p->left;
+        visit(p->data);
+        while(p->rTag == Thread && p->right != head)
+        {
+            p = p->right;
+            visit(p->data);
+        }
+        p = p->right;
+    }
+}
+
+int CreateThreadedBiTree(ThreadedBiTree *root, FILE* fp)
+{
+    char ch;
+    fscanf(fp,"%c", &ch);
+    if(ch == '#')
+        *root = NULL;
+    else
+    {
+        if(!(*root = malloc(sizeof(ThreadedBiTreeNode))))
+            return -1;
+        (*root)->data = ch;
+        (*root)->lTag = Link;
+        CreateThreadedBiTree(&(*root)->left, fp);
+        (*root)->rTag = Link;
+        CreateThreadedBiTree(&(*root)->right, fp);
+    }
+    return 0;
 }

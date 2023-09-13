@@ -14,7 +14,8 @@ extern "C"
 #define Elem    char
 typedef void(*visit_f)(Elem e);
 
-typedef struct BiTreeNode {
+typedef struct BiTreeNode
+{
     Elem data;
     struct BiTreeNode *left, *right;
 } BiTreeNode, *BiTree;
@@ -27,6 +28,19 @@ void PostOrderTraverse(BiTree root, visit_f visit);
 void PreOrderTraverse_NonRecursive(BiTree root, visit_f visit);
 void InOrderTraverse_NonRecursive(BiTree root, visit_f visit);
 void PostOrderTraverse_NonRecursive(BiTree root, visit_f visit);
+
+typedef enum {Link, Thread} PointerTag;
+
+typedef struct ThreadedBiTreeNode
+{
+    Elem data;
+    struct ThreadedBiTreeNode* left, *right;
+    PointerTag lTag, rTag;
+} ThreadedBiTreeNode, *ThreadedBiTree;
+
+int CreateThreadedBiTree(ThreadedBiTree *root, FILE* fp);
+void InOrderThreading(ThreadedBiTree* thread, ThreadedBiTree root);
+void InOrderTraverseThreaded(ThreadedBiTree root, visit_f visit);
 
 #ifdef __cplusplus
 }

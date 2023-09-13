@@ -44,3 +44,16 @@ TEST(BiTreeTest, Test_Traverse_NonRecursive) {
     EXPECT_EQ(order, "CGEFDBA");
     fclose(in);
 }
+
+TEST(BiTreeTest, Test_InOrder_Threading) {
+    ThreadedBiTree root;
+    FILE* in = fopen(R"(F:\CMakeProjects\algorithms\binary_tree\input2.data)", "r");
+    ASSERT_NE(in, nullptr);
+    EXPECT_EQ(CreateThreadedBiTree(&root, in), 0);
+    ThreadedBiTree head;
+    InOrderThreading(&head, root);
+    order.clear();
+    InOrderTraverseThreaded(head, visit);
+    ASSERT_EQ(order, "DBHEJAIFCG");
+    fclose(in);
+}
